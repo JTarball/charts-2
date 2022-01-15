@@ -3,7 +3,7 @@ import { ANGLE_RATIO } from './constants';
 /**
  * Returns the value of a number upto 2 decimal places.
  * @param {Number} d Any number
- */
+*/
 export function floatTwo(d) {
 	return parseFloat(d.toFixed(2));
 }
@@ -12,7 +12,7 @@ export function floatTwo(d) {
  * Returns whether or not two given arrays are equal.
  * @param {Array} arr1 First array
  * @param {Array} arr2 Second array
- */
+*/
 export function arraysEqual(arr1, arr2) {
 	if(arr1.length !== arr2.length) return false;
 	let areEqual = true;
@@ -25,7 +25,7 @@ export function arraysEqual(arr1, arr2) {
 /**
  * Shuffles array in place. ES6 version
  * @param {Array} array An array containing the items.
- */
+*/
 export function shuffle(array) {
 	// Awesomeness: https://bost.ocks.org/mike/shuffle/
 	// https://stackoverflow.com/a/2450976/6495043
@@ -45,7 +45,7 @@ export function shuffle(array) {
  * @param {Number} count number of filler elements
  * @param {Object} element element to fill with
  * @param {Boolean} start fill at start?
- */
+*/
 export function fillArray(array, count, element, start=false) {
 	if(!element) {
 		element = start ? array[0] : array[array.length - 1];
@@ -59,7 +59,7 @@ export function fillArray(array, count, element, start=false) {
  * Returns pixel width of string.
  * @param {String} string
  * @param {Number} charWidth Width of single char in pixels
- */
+*/
 export function getStringWidth(string, charWidth) {
 	return (string+"").length * charWidth;
 }
@@ -81,9 +81,9 @@ export function bindChange(obj, getFn, setFn) {
 export function getRandomBias(min, max, bias, influence) {
 	const range = max - min;
 	const biasValue = range * bias + min;
-	var rnd = Math.random() * range + min,		// random in range
-		mix = Math.random() * influence;		// random mixer
-	return rnd * (1 - mix) + biasValue * mix;	// mix full range and bias
+	var rnd = Math.random() * range + min,      // random in range
+		mix = Math.random() * influence;        // random mixer
+	return rnd * (1 - mix) + biasValue * mix;   // mix full range and bias
 }
 
 export function getPositionByAngle(angle, radius) {
@@ -97,7 +97,7 @@ export function getPositionByAngle(angle, radius) {
  * Check if a number is valid for svg attributes
  * @param {object} candidate Candidate to test
  * @param {Boolean} nonNegative flag to treat negative number as invalid
- */
+*/
 export function isValidNumber(candidate, nonNegative=false) {
 	if (Number.isNaN(candidate)) return false;
 	else if (candidate === undefined) return false;
@@ -109,7 +109,7 @@ export function isValidNumber(candidate, nonNegative=false) {
 /**
  * Round a number to the closes precision, max max precision 4
  * @param {Number} d Any Number
- */
+*/
 export function round(d) {
 	// https://floating-point-gui.de/
 	// https://www.jacklmoore.com/notes/rounding-in-javascript/
@@ -119,25 +119,25 @@ export function round(d) {
 /**
  * Creates a deep clone of an object
  * @param {Object} candidate Any Object
- */
- export function deepClone(candidate) {
+*/
+export function deepClone(candidate) {
 	let cloned, value, key;
-  
+	
 	if (candidate instanceof Date) {
-	  return new Date(candidate.getTime());
+		return new Date(candidate.getTime());
 	}
-  
+	
 	if (typeof candidate !== "object" || candidate === null) {
-	  return candidate;
+		return candidate;
 	}
-  
+	
 	cloned = Array.isArray(candidate) ? [] : {};
-  
+	
 	for (key in candidate) {
-	  value = candidate[key];
-  
-	  cloned[key] = deepClone(value);
+		value = candidate[key];
+		
+		cloned[key] = deepClone(value);
 	}
-  
+	
 	return cloned;
-  }
+}
