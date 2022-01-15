@@ -6,6 +6,9 @@
   "module": "dist/frappe-charts.min.esm.js",
   "src": "dist/frappe-charts.esm.js",
   "browser": "dist/frappe-charts.min.umd.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "directories": {
     "doc": "docs"
   },
